@@ -1,11 +1,8 @@
 import * as React from "react";
+import {ICourse} from "../../actions/courseActions";
 
 export interface ICourseProps {
     CourseYear: number;
-}
-
-export interface ICourse {
-    year: number;
 }
 
 export interface ICourseState {
