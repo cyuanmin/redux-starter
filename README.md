@@ -10,6 +10,7 @@ see https://www.npmjs.org/package/npm-check-updates
 
 $ npm install -g npm-check-updates
 $ npm-check-updates -u
+$ npm update
 
 ## Install dependencies
 $ npm install
