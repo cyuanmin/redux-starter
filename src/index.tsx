@@ -6,8 +6,6 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./styles/styles.css";
 
 ReactDOM.render(
-    <Router>
-        <App/>
-    </Router>,
+    <App/>,
     document.getElementById("example")
 );
