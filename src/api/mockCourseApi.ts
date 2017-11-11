@@ -1,10 +1,11 @@
 import delay from './delay';
+import {ICourse} from "../actions/courseTypes";
 
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
 
-const courses = [
+const courses: Array<ICourse> = [
   {
     id: "react-flux-building-applications",
     title: "Building Applications in React and Flux",
@@ -47,36 +48,36 @@ const courses = [
   }
 ];
 
-function replaceAll(str: string, find: string, replace: string) {
+function replaceAll(str: string, find: string, replace: string): string {
   return str.replace(new RegExp(find, 'g'), replace);
 }
 
 //This would be performed on the server in a real app. Just stubbing in.
-const generateId = (course: any) => {
+function generateId(course: ICourse): string {
   return replaceAll(course.title, ' ', '-');
-};
+}
 
 class CourseApi {
-  static getAllCourses() {
-    return new Promise((resolve, reject) => {
+  public static getAllCourses(): Promise<Array<ICourse>> {
+    return new Promise<Array<ICourse>>((resolve: any, reject: any): void => {
       setTimeout(() => {
         resolve(Object.assign([], courses));
       }, delay);
     });
   }
 
-  static saveCourse(course: any) {
+  public static saveCourse(course: ICourse): Promise<ICourse> {
     course = Object.assign({}, course); // to avoid manipulating object passed in.
-    return new Promise((resolve, reject) => {
+    return new Promise<ICourse>((resolve: any, reject: any): void => {
       setTimeout(() => {
         // Simulate server-side validation
-        const minCourseTitleLength = 1;
+        const minCourseTitleLength: number = 1;
         if (course.title.length < minCourseTitleLength) {
           reject(`Title must be at least ${minCourseTitleLength} characters.`);
         }
 
         if (course.id) {
-          const existingCourseIndex = courses.findIndex(a => a.id == course.id);
+          const existingCourseIndex: number = courses.findIndex((a: ICourse) => a.id === course.id);
           courses.splice(existingCourseIndex, 1, course);
         } else {
           //Just simulating creation here.
@@ -92,11 +93,11 @@ class CourseApi {
     });
   }
 
-  static deleteCourse(courseId: string) {
-    return new Promise((resolve, reject) => {
+  public static deleteCourse(courseId: string): Promise<void> {
+    return new Promise((resolve: any, reject: any): void => {
       setTimeout(() => {
-        const indexOfCourseToDelete = courses.findIndex(course => {
-            return course.id == courseId;
+        const indexOfCourseToDelete: number = courses.findIndex((course: ICourse) => {
+            return course.id === courseId;
         });
         courses.splice(indexOfCourseToDelete, 1);
         resolve();

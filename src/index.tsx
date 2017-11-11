@@ -8,15 +8,7 @@ import {configureStore, IAppState} from "./stores/configStore";
 import {Provider, Store} from "react-redux";
 import {ICourse} from "./actions/courseTypes";
 
-const mathCourse: ICourse = {
-    title: "Math"
-};
-
-const chemistryCourse: ICourse = {
-    title: "Chemistry"
-};
-
-const dbCourses: Array<ICourse> = [mathCourse, chemistryCourse];
+const dbCourses: Array<ICourse> = [];
 const store: Store<IAppState> = configureStore({courses: dbCourses});
 
 ReactDOM.render(

@@ -19,7 +19,14 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
     constructor(props: ICourseProps) {
         super(props);
         this.state = {
-            course: {title: ""}
+            course: {
+                id: "",
+                title: "",
+                watchHref: "",
+                authorId: "",
+                length: "",
+                category: ""
+            }
         };
 
         this.onTitleChange = this.onTitleChange.bind(this);
