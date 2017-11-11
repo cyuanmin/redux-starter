@@ -8,7 +8,7 @@ import {configureStore} from "./stores/configStore";
 import {Provider, Store} from "react-redux";
 import {ICourse} from "./actions/courseActions";
 
-const store: Store<Array<ICourse>> = configureStore(null);
+const store: Store<Array<ICourse>> = configureStore([]);
 ReactDOM.render(
     <Provider store={store}>
         <App/>
