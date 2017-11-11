@@ -2,7 +2,7 @@ import * as React from "react";
 import {ICourse} from "../../actions/courseActions";
 
 export interface ICourseProps {
-    CourseYear: number;
+    name: string;
 }
 
 export interface ICourseState {
@@ -10,15 +10,10 @@ export interface ICourseState {
 }
 
 export class CoursePage extends React.Component<ICourseProps, ICourseState> {
-    public state: ICourseState = {
-        course: { year: 0 },
-    };
-
     constructor(props: ICourseProps) {
         super(props);
         this.state = {
-            course: { year: 1998 }
-           // course: { year: this.props.CourseYear }
+            course: {title: ""}
         };
 
         this.onTitleChange = this.onTitleChange.bind(this);
@@ -27,13 +22,13 @@ export class CoursePage extends React.Component<ICourseProps, ICourseState> {
 
     public onTitleChange(ev: any): void {
         const course: ICourse = this.state.course;
-        course.year = ev.target.value;
-        this.setState({ course: course });
+        course.title = ev.target.value;
+        this.setState({course: course});
     }
 
     
     public onClickSave(ev: any): void {
-        alert('Saving' + this.state.course.year);
+        alert('Saving' + this.state.course.title);
     }
 
     public render(): JSX.Element {
@@ -42,7 +37,7 @@ export class CoursePage extends React.Component<ICourseProps, ICourseState> {
                 <h1>Courses</h1>
                 <h2>Add Course</h2>
                 <input type="text" onChange={this.onTitleChange}
-                    value={this.state.course.year} />
+                value ={this.state.course.title} />
                 <input type="submit" value="Save" onClick={this.onClickSave}/>
             </div>
         );
