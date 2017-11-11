@@ -42,12 +42,19 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
         return (
             <div>
                 <h1>Courses</h1>
+                {(this.props as any).courses.map(this.renderCourseRow)}
                 <h2>Add Course</h2>
                 <input type="text" onChange={this.onTitleChange}
                 value ={this.state.course.title} />
                 <input type="submit" value="Save" onClick={this.onClickSave}/>
             </div>
         );
+    }
+
+    private renderCourseRow(course: ICourse, index: number): JSX.Element {
+        return <div key={index}>
+        {course.title}
+        </div>;
     }
 }
 
