@@ -15,6 +15,6 @@ $ npm update
 ## Install dependencies
 $ npm install
 
-## Redux key learning poins
+## Redux key learning points
 - RootReducer can conain a list of reducers. The name of the reducer (e.g. courses) is most critical for correct mapping between Redux state and component props.
 
