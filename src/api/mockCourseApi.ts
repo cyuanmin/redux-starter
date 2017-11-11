@@ -95,7 +95,7 @@ class CourseApi {
   static deleteCourse(courseId: string) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfCourseToDelete = courses.findIndex((course: any): boolean => {
+        const indexOfCourseToDelete = courses.findIndex(course => {
             return course.id == courseId;
         });
         courses.splice(indexOfCourseToDelete, 1);

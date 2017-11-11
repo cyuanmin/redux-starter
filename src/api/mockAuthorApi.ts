@@ -75,7 +75,7 @@ class AuthorApi {
   static deleteAuthor(authorId: string): Promise<void>{
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfAuthorToDelete: number = authors.findIndex((author: IAuthor): boolean => {
+        const indexOfAuthorToDelete: number = authors.findIndex(author => {
           return author.id == authorId;
         });
         authors.splice(indexOfAuthorToDelete, 1);
