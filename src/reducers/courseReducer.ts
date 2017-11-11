@@ -6,6 +6,10 @@ export function courseReducer(state: Array<ICourse> = [], action: ActionTypes): 
         case TypeKeys.CREATE_COURSE: {
             return [...state, Object.assign({}, action.course)];
         }
+
+        case TypeKeys.LOAD_COURSES_SUCCESS: {
+            return action.courses;
+        }
         
         default:
             return state;

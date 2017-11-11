@@ -7,9 +7,11 @@ import "./styles/styles.css";
 import {configureStore, IAppState} from "./stores/configStore";
 import {Provider, Store} from "react-redux";
 import {ICourse} from "./actions/courseTypes";
+import {loadCourse} from "./actions/courseActions";
 
-const dbCourses: Array<ICourse> = [];
-const store: Store<IAppState> = configureStore({courses: dbCourses});
+const defaultCoruses: Array<ICourse> = [];
+const store: Store<IAppState> = configureStore({courses: defaultCoruses});
+store.dispatch(loadCourse());
 
 ReactDOM.render(
     <Provider store={store}>
