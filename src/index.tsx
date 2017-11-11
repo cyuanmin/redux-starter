@@ -9,11 +9,11 @@ import {Provider, Store} from "react-redux";
 import {ICourse} from "./actions/courseTypes";
 
 const mathCourse: ICourse = {
-    title: "Math book"
+    title: "Math"
 };
 
 const chemistryCourse: ICourse = {
-    title: "Chemistry book"
+    title: "Chemistry"
 };
 
 const dbCourses: Array<ICourse> = [mathCourse, chemistryCourse];
