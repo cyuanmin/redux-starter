@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {ReducersMapObject, bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courseActions";
 import {IAppState} from "../../stores/configStore";
+import CourseList from "./CourseList";
 
 export interface ICourseProps {
     name: string;
@@ -48,19 +49,13 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
         return (
             <div>
                 <h1>Courses</h1>
-                {this.props.courses.map(this.renderCourseRow)}
+                <CourseList courses={this.props.courses}/>
                 <h2>Add Course</h2>
                 <input type="text" onChange={this.onTitleChange}
                 value ={this.state.course.title} />
                 <input type="submit" value="Save" onClick={this.onClickSave}/>
             </div>
         );
-    }
-
-    private renderCourseRow(course: ICourse, index: number): JSX.Element {
-        return <div key={index}>
-        {course.title}
-        </div>;
     }
 }
 
@@ -72,7 +67,8 @@ function mapStateToProps(state: IAppState, ownProps: ICourseProps): any{
 
 function mapDispatchToProps(dispatch: any): any{
     return {
-        actions: bindActionCreators(courseActions, dispatch)
+        // https://stackoverflow.com/questions/42888184/how-to-resolve-typescript-redux-connect-error-actioncreatorsmapobject
+        actions: bindActionCreators<any>(courseActions, dispatch)
     };
 }
 
