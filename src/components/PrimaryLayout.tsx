@@ -9,9 +9,9 @@ export const PrimaryLayout: () => JSX.Element = (): JSX.Element => (
     <div className="container">
         <Header/>
         <main>        
-            <Route path="/" exact component={HomePage} />
-            <Route path="/about" component={AboutPage} />
-            <Route path="/course" component={CoursePage} />
+            <Route path="/" exact component={HomePage}/>
+            <Route path="/about" component={AboutPage}/>
+            <Route path="/course" component={CoursePage}/>
         </main>
     </div>
 );

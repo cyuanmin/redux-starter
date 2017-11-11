@@ -3,6 +3,7 @@ import {ICourse} from "../../actions/courseActions";
 import {connect} from "react-redux";
 import {ReducersMapObject} from "redux";
 import {ICreateCourseAction, TypeKeys} from "../../actions/courseActions";
+import {IAppState} from "../../stores/configStore";
 
 export interface ICourseProps {
     name: string;
@@ -50,7 +51,7 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
     }
 }
 
-function mapStateToProps(state: ReducersMapObject, ownProps: any): any{
+function mapStateToProps(state: IAppState, ownProps: ICourseProps): any{
     return {
         courses: state.courses
     };
