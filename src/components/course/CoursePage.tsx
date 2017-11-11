@@ -1,12 +1,14 @@
 import * as React from "react";
-import {ICourse} from "../../actions/courseActions";
+import {ICourse, IDeleteCourseAction} from "../../actions/courseActions";
 import {connect} from "react-redux";
 import {ReducersMapObject} from "redux";
-import {ICreateCourseAction, TypeKeys} from "../../actions/courseActions";
+import {ActionTypes, TypeKeys} from "../../actions/courseActions";
 import {IAppState} from "../../stores/configStore";
 
 export interface ICourseProps {
     name: string;
+    courses: Array<ICourse>; // Redux properties
+    dispatch: (action: ActionTypes) => void; // // Redux functions
 }
 
 export interface ICourseState {
@@ -32,7 +34,7 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
 
     
     public onClickSave(ev: any): void {
-        (this.props as any).dispatch({
+        this.props.dispatch({
             type: TypeKeys.CREATE_COURSE,
             course: this.state.course
         });
@@ -42,7 +44,7 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
         return (
             <div>
                 <h1>Courses</h1>
-                {(this.props as any).courses.map(this.renderCourseRow)}
+                {this.props.courses.map(this.renderCourseRow)}
                 <h2>Add Course</h2>
                 <input type="text" onChange={this.onTitleChange}
                 value ={this.state.course.title} />
