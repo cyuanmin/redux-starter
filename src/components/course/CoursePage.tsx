@@ -8,7 +8,7 @@ import {IAppState} from "../../stores/configStore";
 export interface ICourseProps {
     name: string;
     courses: Array<ICourse>; // Redux properties
-    dispatch: (action: ActionTypes) => void; // // Redux functions
+    createCourse: (course: ICourse) => void; // // Redux functions
 }
 
 export interface ICourseState {
@@ -34,10 +34,7 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
 
     
     public onClickSave(ev: any): void {
-        this.props.dispatch({
-            type: TypeKeys.CREATE_COURSE,
-            course: this.state.course
-        });
+        this.props.createCourse(this.state.course);
     }
 
     public render(): JSX.Element {
@@ -66,4 +63,13 @@ function mapStateToProps(state: IAppState, ownProps: ICourseProps): any{
     };
 }
 
-export default connect(mapStateToProps, null)(CoursePage);
+function mapDispatchToProps(dispatch: any): any{
+    return {
+        createCourse: (course: ICourse): any => dispatch({
+            type: TypeKeys.CREATE_COURSE,
+            course: course
+        })
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);
