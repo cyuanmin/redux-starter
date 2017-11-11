@@ -7,7 +7,7 @@ import "./styles/styles.css";
 import {configureStore, IAppState} from "./stores/configStore";
 import {Provider, Store} from "react-redux";
 import {ICourse} from "./actions/courseTypes";
-import {loadCourse} from "./actions/courseHelpers";
+import {loadCourse} from "./actions/courseThunks";
 
 const defaultCoruses: Array<ICourse> = [];
 const store: Store<IAppState> = configureStore({courses: defaultCoruses});
