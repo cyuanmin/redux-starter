@@ -6,7 +6,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./styles/styles.css";
 import {configureStore, IAppState} from "./stores/configStore";
 import {Provider, Store} from "react-redux";
-import {ICourse} from "./actions/courseActions";
+import {ICourse} from "./actions/courseTypes";
 
 const store: Store<IAppState> = configureStore({courses: []});
 ReactDOM.render(

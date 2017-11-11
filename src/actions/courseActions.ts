@@ -1,20 +1,9 @@
-export interface ICourse {
-    title: string;
-}
+import {ICourse, TypeKeys, ICreateCourseAction} from "./courseTypes";
 
-export enum TypeKeys{
-    CREATE_COURSE = "CREATE_COURSE",
-    DELETE_COURSE = "DELETE_COURSE"
+// action functions
+export function CreateCourse(course: ICourse): ICreateCourseAction {
+    return {
+        type: TypeKeys.CREATE_COURSE,
+        course: course
+    };
 }
-
-export interface ICreateCourseAction {
-    type: TypeKeys.CREATE_COURSE;
-    course: ICourse;
-}
-
-export interface IDeleteCourseAction {
-    type: TypeKeys.DELETE_COURSE;
-    id: number;
-}
-
-export type ActionTypes = ICreateCourseAction | IDeleteCourseAction;

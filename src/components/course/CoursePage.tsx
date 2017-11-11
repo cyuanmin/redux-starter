@@ -1,14 +1,14 @@
 import * as React from "react";
-import {ICourse, IDeleteCourseAction} from "../../actions/courseActions";
+import {ICourse, IDeleteCourseAction, ActionTypes, TypeKeys} from "../../actions/courseTypes";
 import {connect} from "react-redux";
-import {ReducersMapObject} from "redux";
-import {ActionTypes, TypeKeys} from "../../actions/courseActions";
+import {ReducersMapObject, bindActionCreators} from "redux";
+import * as courseActions from "../../actions/courseActions";
 import {IAppState} from "../../stores/configStore";
 
 export interface ICourseProps {
     name: string;
-    courses: Array<ICourse>; // Redux properties
-    createCourse: (course: ICourse) => void; // // Redux functions
+    courses: Array<ICourse>; // Redux properties. See mapStateToProps()
+    actions: typeof courseActions; // Redux actions. See mapStateToProps()
 }
 
 export interface ICourseState {
@@ -34,7 +34,7 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
 
     
     public onClickSave(ev: any): void {
-        this.props.createCourse(this.state.course);
+        this.props.actions.CreateCourse(this.state.course);
     }
 
     public render(): JSX.Element {
@@ -65,10 +65,7 @@ function mapStateToProps(state: IAppState, ownProps: ICourseProps): any{
 
 function mapDispatchToProps(dispatch: any): any{
     return {
-        createCourse: (course: ICourse): any => dispatch({
-            type: TypeKeys.CREATE_COURSE,
-            course: course
-        })
+        actions: bindActionCreators(courseActions, dispatch)
     };
 }
 
