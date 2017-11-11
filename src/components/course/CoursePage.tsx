@@ -46,10 +46,11 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
     }
 
     public render(): JSX.Element {
+        const courses: Array<ICourse> = this.props.courses;
         return (
             <div>
                 <h1>Courses</h1>
-                <CourseList courses={this.props.courses}/>
+                <CourseList courses={courses}/>
                 <h2>Add Course</h2>
                 <input type="text" onChange={this.onTitleChange}
                 value ={this.state.course.title} />
