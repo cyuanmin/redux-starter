@@ -1,5 +1,8 @@
 import * as React from "react";
 import {ICourse} from "../../actions/courseActions";
+import {connect} from "react-redux";
+import {ReducersMapObject} from "redux";
+import {ICreateCourseAction, TypeKeys} from "../../actions/courseActions";
 
 export interface ICourseProps {
     name: string;
@@ -9,7 +12,7 @@ export interface ICourseState {
     course: ICourse;
 }
 
-export class CoursePage extends React.Component<ICourseProps, ICourseState> {
+class CoursePage extends React.Component<ICourseProps, ICourseState> {
     constructor(props: ICourseProps) {
         super(props);
         this.state = {
@@ -28,7 +31,10 @@ export class CoursePage extends React.Component<ICourseProps, ICourseState> {
 
     
     public onClickSave(ev: any): void {
-        alert('Saving' + this.state.course.title);
+        (this.props as any).dispatch({
+            type: TypeKeys.CREATE_COURSE,
+            course: this.state.course
+        });
     }
 
     public render(): JSX.Element {
@@ -43,3 +49,11 @@ export class CoursePage extends React.Component<ICourseProps, ICourseState> {
         );
     }
 }
+
+function mapStateToProps(state: ReducersMapObject, ownProps: any): any{
+    return {
+        courses: state.courses
+    };
+}
+
+export default connect(mapStateToProps, null)(CoursePage);

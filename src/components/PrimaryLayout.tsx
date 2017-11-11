@@ -1,8 +1,8 @@
 import { Route, Switch } from 'react-router-dom';
 import * as React from "react";
-import {HomePage} from "../components/home/HomePage";
-import {AboutPage} from "../components/about/AboutPage";
-import {CoursePage} from "../components/course/CoursePage";
+import HomePage from "../components/home/HomePage";
+import AboutPage from "../components/about/AboutPage";
+import CoursePage from "../components/course/CoursePage";
 import {Header} from "../components/header/Header";
 
 export const PrimaryLayout: () => JSX.Element = (): JSX.Element => (

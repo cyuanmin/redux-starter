@@ -5,9 +5,10 @@ import { App } from "./components/App";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./styles/styles.css";
 import {configureStore} from "./stores/configStore";
-import {Provider} from "react-redux";
+import {Provider, Store} from "react-redux";
+import {ICourse} from "./actions/courseActions";
 
-const store = configureStore(null);
+const store: Store<Array<ICourse>> = configureStore(null);
 ReactDOM.render(
     <Provider store={store}>
         <App/>

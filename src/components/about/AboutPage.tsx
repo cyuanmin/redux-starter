@@ -1,8 +1,10 @@
 import * as React from "react";
 
-export const AboutPage: () => JSX.Element = (): JSX.Element =>
+const AboutPage: () => JSX.Element = (): JSX.Element =>
     (
         <div>
             About Page
         </div>
     );
+
+export default AboutPage;
