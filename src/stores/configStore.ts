@@ -4,6 +4,10 @@ import {ICourse} from "../actions/courseActions";
 import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 import {Store} from "react-redux";
 
-export function configureStore(initalState: Array<ICourse>): Store<Array<ICourse>>{
+export interface IAppState{
+    courses: Array<ICourse>;
+}
+
+export function configureStore(initalState: IAppState): Store<IAppState>{
     return createStore(rootReducer, initalState, applyMiddleware(reduxImmutableStateInvariant()));
 }
