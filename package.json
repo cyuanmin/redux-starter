@@ -16,6 +16,7 @@
     "@types/react": "^16.0.22",
     "@types/react-dom": "^16.0.3",
     "@types/react-router-dom": "^4.2.1",
+    "@types/redux-immutable-state-invariant": "^2.0.3",
     "awesome-typescript-loader": "^3.3.0",
     "chai": "^4.1.2",
     "css-loader": "^0.28.7",
@@ -38,7 +39,8 @@
     "react-dom": "^16.1.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-immutable-state-invariant": "^2.1.0"
   },
   "repository": {
     "type": "git",
