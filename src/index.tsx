@@ -7,11 +7,15 @@ import "./styles/styles.css";
 import {configureStore, IAppState} from "./stores/configStore";
 import {Provider, Store} from "react-redux";
 import {ICourse} from "./models/course";
+import {IAuthor} from "./models/author";
 import {loadCourse} from "./actions/courseThunks";
+import {loadAuthors} from "./actions/authorThunks";
 
-const defaultCoruses: Array<ICourse> = [];
-const store: Store<IAppState> = configureStore({courses: defaultCoruses});
+const defaultCourses: Array<ICourse> = [];
+const defaultAuthors: Array<IAuthor> = [];
+const store: Store<IAppState> = configureStore({courses: defaultCourses, authors: defaultAuthors});
 store.dispatch(loadCourse());
+store.dispatch(loadAuthors());
 
 ReactDOM.render(
     <Provider store={store}>
