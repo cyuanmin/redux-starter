@@ -8,6 +8,16 @@ export function courseReducer(state: Array<ICourse> = [], action: ActionTypes): 
             return [...state, Object.assign({}, action.course)];
         }
 
+        case TypeKeys.CREATE_COURSE_SUCCESS: {
+            return [...state, Object.assign({}, action.course)];
+        }
+
+        case TypeKeys.UPDATE_COURSE_SUCCESS: {
+            return [
+                ...state.filter((course: ICourse) => course.id !== action.course.id), Object.assign({}, action.course)
+            ];
+        }
+
         case TypeKeys.LOAD_COURSES_SUCCESS: {
             return action.courses;
         }

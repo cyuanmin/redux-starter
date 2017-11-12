@@ -20,6 +20,7 @@ export interface IManagedCourseProps {
     name: string;
     course: ICourse; // Redux properties. See mapStateToProps()
     authors: Array<IAuthorFormatted>; // Redux properties. See mapStateToProps()
+    actions: typeof courseActions; // Redux actions. See mapStateToProps()
 }
 
 export interface IManagedCourseState {
@@ -37,6 +38,7 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         };
 
         this.updateCourseState = this.updateCourseState.bind(this);
+        this.saveCourse = this.saveCourse.bind(this);
     }
 
     public updateCourseState(event: any): any {
@@ -47,12 +49,18 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         return this.setState({course: course});
     }
 
+    public saveCourse(event: Event): any {
+        event.preventDefault();
+        this.props.actions.saveCourse(this.state.course);
+    }
+
     public render(): JSX.Element {
         return (
             <div>
                 <h1>Manage Course</h1>
                 <CourseForm course={this.state.course} 
                 onChange={this.updateCourseState} 
+                onSave={this.saveCourse}
                 errors={this.state.errors} 
                 allAuthors={this.props.authors} />
             </div>

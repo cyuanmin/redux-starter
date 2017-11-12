@@ -6,6 +6,7 @@ import {ReducersMapObject, bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courseActions";
 import {IAppState} from "../../stores/configStore";
 import CourseList from "./CourseList";
+import {Redirect} from "react-router";
 
 export interface ICourseProps {
     name: string;
@@ -15,6 +16,7 @@ export interface ICourseProps {
 
 export interface ICourseState {
     course: ICourse;
+    navigate: boolean;
 }
 
 class CoursePage extends React.Component<ICourseProps, ICourseState> {
@@ -28,11 +30,11 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
                 authorId: "",
                 length: "",
                 category: ""
-            }
+            },
+            navigate: false
         };
 
         this.onTitleChange = this.onTitleChange.bind(this);
-        this.onClickSave = this.onClickSave.bind(this);
     }
 
     public onTitleChange(ev: any): void {
@@ -41,21 +43,21 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
         this.setState({course: course});
     }
 
-    
-    public onClickSave(ev: any): void {
-        this.props.actions.CreateCourse(this.state.course);
-    }
-
     public render(): JSX.Element {
         const courses: Array<ICourse> = this.props.courses;
+        const navigate: boolean = this.state.navigate;
+
+        if (navigate) {
+            return <Redirect to="/course/test" push={true}/>;
+        }
         return (
             <div>
                 <h1>Courses</h1>
+                <input type="submit"
+                value="Add Course"
+                className="btn btn-primary"
+                onClick={(): void => this.setState({navigate: true})}/>
                 <CourseList courses={courses}/>
-                <h2>Add Course</h2>
-                <input type="text" onChange={this.onTitleChange}
-                value ={this.state.course.title} />
-                <input type="submit" value="Save" onClick={this.onClickSave}/>
             </div>
         );
     }

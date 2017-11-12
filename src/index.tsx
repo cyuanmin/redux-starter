@@ -8,8 +8,8 @@ import {configureStore, IAppState} from "./stores/configStore";
 import {Provider, Store} from "react-redux";
 import {ICourse} from "./models/course";
 import {IAuthor} from "./models/author";
-import {loadCourse} from "./actions/courseThunks";
-import {loadAuthors} from "./actions/authorThunks";
+import {loadCourse} from "./actions/courseActions";
+import {loadAuthors} from "./actions/authorActions";
 
 const defaultCourses: Array<ICourse> = [];
 const defaultAuthors: Array<IAuthor> = [];

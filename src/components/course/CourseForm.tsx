@@ -8,7 +8,7 @@ import SelectInput from "../../common/SelectInput";
 export interface ICourseFormProp {
     course: ICourse;
     allAuthors?: Array<IAuthorFormatted>;
-    onSave?: () => any;
+    onSave?: (event: any) => any;
     onChange?: (event: any) => any;
     loading?: boolean;
     errors?: any;
