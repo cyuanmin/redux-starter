@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ICourse } from "../../models/course";
-import { IAuthor } from "../../models/author";
+import { IAuthor, IAuthorFormatted} from "../../models/author";
 import { IDeleteCourseAction, ActionTypes, TypeKeys } from "../../actions/courseTypes";
 import { connect } from "react-redux";
 import { ReducersMapObject, bindActionCreators } from "redux";
@@ -19,7 +19,7 @@ export interface ICourseError {
 export interface IManagedCourseProps {
     name: string;
     course: ICourse; // Redux properties. See mapStateToProps()
-    authors: Array<IAuthor>;
+    authors: Array<IAuthorFormatted>;
 }
 
 export interface IManagedCourseState {
@@ -41,7 +41,7 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         return (
             <div>
                 <h1>Manage Course</h1>
-                <CourseForm course={this.state.course} errors={this.state.errors} allAuthors={[]}/>
+                <CourseForm course={this.state.course} errors={this.state.errors} allAuthors={this.props.authors} />
             </div>
         );
     }
@@ -57,10 +57,16 @@ function mapStateToProps(state: IAppState, ownProps: IManagedCourseProps): any {
         category: ""
     };
 
+    const authorsFormattedForDropdown: Array<IAuthorFormatted> = state.authors.map((author: IAuthor) => {
+        return {
+            value: author.id,
+            text: author.firstName + " " + author.lastName
+        };
+    });
 
     return {
         course: course,
-        authors: state.authors
+        authors: authorsFormattedForDropdown
     };
 }
 

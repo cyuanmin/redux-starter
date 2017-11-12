@@ -1,13 +1,13 @@
 
 import * as React from "react";
 import { ICourse } from "../../models/course";
-import { IAuthor } from "../../models/author";
+import { IAuthor, IAuthorFormatted} from "../../models/author";
 import TextInput from "../../common/TextInput";
 import SelectInput from "../../common/SelectInput";
 
 export interface ICourseFormProp {
     course: ICourse;
-    allAuthors?: Array<IAuthor>;
+    allAuthors?: Array<IAuthorFormatted>;
     onSave?: () => any;
     onChange?: () => any;
     loading?: boolean;

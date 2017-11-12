@@ -3,3 +3,8 @@ export interface IAuthor {
     firstName: string;
     lastName: string;
 }
+
+export interface IAuthorFormatted {
+    value: string;
+    text: string;
+}
