@@ -1,4 +1,5 @@
-import {ICourse, TypeKeys, ICreateCourseAction, ILoadCoursesSuccessAction} from "./courseTypes";
+import {ICourse} from "../models/course";
+import {TypeKeys, ICreateCourseAction, ILoadCoursesSuccessAction} from "./courseTypes";
 
 // action functions
 export function CreateCourse(course: ICourse): ICreateCourseAction {

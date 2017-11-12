@@ -1,11 +1,11 @@
 
 import * as React from "react";
 import { ICourse } from "../../models/course";
-import { Link } from "react-router-dom";
 
-export interface ICourseListRowProp {
+export interface ICourseFormProp {
     course: ICourse;
 }
+/*
 const CourseListRow: React.SFC<ICourseListRowProp> = (props: ICourseListRowProp): JSX.Element => {
     const course: ICourse = props.course;
     return (
@@ -19,3 +19,4 @@ const CourseListRow: React.SFC<ICourseListRowProp> = (props: ICourseListRowProp)
 };
 
 export default CourseListRow;
+*/

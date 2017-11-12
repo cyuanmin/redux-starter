@@ -1,6 +1,6 @@
 import courseApi from "../api/mockCourseApi";
 import {LoadCoursesSuccess} from "./courseActions";
-import {ICourse} from "./courseTypes";
+import {ICourse} from "../models/course";
 
 export function loadCourse(): (dispatch: any) => Promise<void>
 {

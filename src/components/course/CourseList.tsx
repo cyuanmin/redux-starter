@@ -1,6 +1,6 @@
 import * as React from "react";
 import CourseListRow from "./CourseListRow";
-import { ICourse } from "../../actions/courseTypes";
+import { ICourse } from "../../models/course";
 
 export interface ICourseListProp {
     courses: Array<ICourse>;

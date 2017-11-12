@@ -1,11 +1,4 @@
-export interface ICourse {
-    id: string;
-    title: string;
-    watchHref: string;
-    authorId: string;
-    length: string;
-    category: string;
-}
+import {ICourse} from "../models/course";
 
 export enum TypeKeys{
     CREATE_COURSE = "CREATE_COURSE",

@@ -1,5 +1,6 @@
 import {Action} from "redux";
-import {ActionTypes, TypeKeys, ICourse} from "../actions/courseTypes";
+import {ICourse} from "../models/course";
+import {ActionTypes, TypeKeys} from "../actions/courseTypes";
 
 export function courseReducer(state: Array<ICourse> = [], action: ActionTypes): Array<ICourse>{
     switch (action.type) {

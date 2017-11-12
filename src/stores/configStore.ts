@@ -1,6 +1,6 @@
 import {createStore, applyMiddleware} from "redux";
 import {rootReducer} from "../reducers/rootReducer";
-import {ICourse} from "../actions/courseTypes";
+import {ICourse} from "../models/course";
 import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 import {Store} from "react-redux";
 import thunk from "redux-thunk";
