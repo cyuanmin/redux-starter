@@ -11,7 +11,7 @@ const CourseListRow: React.SFC<ICourseListRowProp> = (props: ICourseListRowProp)
     return (
         <tr>
             <td><a href={course.watchHref} target="_blank">Watch</a></td>
-            <td><Link to={'/course' + props.course.id}>{course.title}</Link></td>
+            <td><Link to={'/course/' + props.course.id}>{course.title}</Link></td>
             <td>{course.authorId}</td>
             <td>{course.category}</td>
             <td>{course.length}</td>
