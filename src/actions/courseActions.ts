@@ -1,5 +1,5 @@
 import {ICourse} from "../models/course";
-import {TypeKeys, 
+import {CourseTypeKeys, 
     ILoadCoursesSuccessAction, 
     ICreateCourseSuccessAction, 
     IUpdateCourseSuccessAction} from "./courseTypes";
@@ -7,21 +7,21 @@ import courseApi from "../api/mockCourseApi";
 
 export function CreateCourseSuccess(course: ICourse): ICreateCourseSuccessAction {
     return {
-        type: TypeKeys.CREATE_COURSE_SUCCESS,
+        type: CourseTypeKeys.CREATE_COURSE_SUCCESS,
         course: course
     };
 }
 
 export function UpdateCourseSuccess(course: ICourse): IUpdateCourseSuccessAction {
     return {
-        type: TypeKeys.UPDATE_COURSE_SUCCESS,
+        type: CourseTypeKeys.UPDATE_COURSE_SUCCESS,
         course: course
     };
 }
 
 export function LoadCoursesSuccess(courses: Array<ICourse>): ILoadCoursesSuccessAction {
     return {
-        type: TypeKeys.LOAD_COURSES_SUCCESS,
+        type: CourseTypeKeys.LOAD_COURSES_SUCCESS,
         courses: courses
     };
 }

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ICourse } from "../../models/course";
 import { IAuthor, IAuthorFormatted} from "../../models/author";
-import { IDeleteCourseAction, ActionTypes, TypeKeys } from "../../actions/courseTypes";
+import { IDeleteCourseAction, CourseActionTypes, CourseTypeKeys } from "../../actions/courseTypes";
 import { connect } from "react-redux";
 import { ReducersMapObject, bindActionCreators } from "redux";
 import * as courseActions from "../../actions/courseActions";

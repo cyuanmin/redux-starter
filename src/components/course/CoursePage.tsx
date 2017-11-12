@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ICourse} from "../../models/course";
-import {IDeleteCourseAction, ActionTypes, TypeKeys} from "../../actions/courseTypes";
+import {IDeleteCourseAction, CourseActionTypes, CourseTypeKeys} from "../../actions/courseTypes";
 import {connect} from "react-redux";
 import {ReducersMapObject, bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courseActions";
@@ -25,7 +25,6 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
             navigate: false
         };
     }
-
 
     public render(): JSX.Element {
         const courses: Array<ICourse> = this.props.courses;
