@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ICourse } from "../../models/course";
+import { IAuthor } from "../../models/author";
 import { IDeleteCourseAction, ActionTypes, TypeKeys } from "../../actions/courseTypes";
 import { connect } from "react-redux";
 import { ReducersMapObject, bindActionCreators } from "redux";
@@ -9,16 +10,16 @@ import CourseList from "./CourseList";
 import CourseForm from "./CourseForm";
 
 export interface ICourseError {
-    title: string;
-    authorId: string;
-    category: string;
-    length: string;
+    title?: string;
+    authorId?: string;
+    category?: string;
+    length?: string;
 }
 
 export interface IManagedCourseProps {
     name: string;
     course: ICourse; // Redux properties. See mapStateToProps()
-    errors: ICourseError;
+    authors: Array<IAuthor>;
 }
 
 export interface IManagedCourseState {
@@ -32,7 +33,7 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         super(props);
         this.state = {
             course: Object.assign({}, this.props.course),
-            errors: Object.assign({}, this.props.errors)
+            errors: {}
         };
     }
 
@@ -56,17 +57,10 @@ function mapStateToProps(state: IAppState, ownProps: IManagedCourseProps): any {
         category: ""
     };
 
-    const errors: ICourseError =
-        {
-            title: "",
-            authorId: "",
-            category: "",
-            length: ""
-        };
 
     return {
         course: course,
-        errors: errors
+        authors: state.authors
     };
 }
 
