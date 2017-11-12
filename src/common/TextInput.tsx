@@ -3,7 +3,7 @@ import * as React from "react";
 export interface ITextInputProp {
     name: string;
     label: string;
-    onChange: () => any;
+    onChange?: (event: any) => any;
     placeholder?: string;
     value: string;
     error: string;

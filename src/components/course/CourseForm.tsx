@@ -9,7 +9,7 @@ export interface ICourseFormProp {
     course: ICourse;
     allAuthors?: Array<IAuthorFormatted>;
     onSave?: () => any;
-    onChange?: () => any;
+    onChange?: (event: any) => any;
     loading?: boolean;
     errors?: any;
 }

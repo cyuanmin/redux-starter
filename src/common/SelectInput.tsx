@@ -3,7 +3,7 @@ import * as React from "react";
 export interface ISelectInputProp {
     name: string;
     label: string;
-    onChange: () => any;
+    onChange?: (event: any) => any;
     defaultOption: string;
     value: string;
     error: string;

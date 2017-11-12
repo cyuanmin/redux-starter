@@ -19,7 +19,7 @@ export interface ICourseError {
 export interface IManagedCourseProps {
     name: string;
     course: ICourse; // Redux properties. See mapStateToProps()
-    authors: Array<IAuthorFormatted>;
+    authors: Array<IAuthorFormatted>; // Redux properties. See mapStateToProps()
 }
 
 export interface IManagedCourseState {
@@ -35,13 +35,26 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
             course: Object.assign({}, this.props.course),
             errors: {}
         };
+
+        this.updateCourseState = this.updateCourseState.bind(this);
+    }
+
+    public updateCourseState(event: any): any {
+        const field: string = event.target.name;
+        const course: ICourse = this.state.course;
+        const courseAny: any = course as any;
+        courseAny[field] = event.target.value;
+        return this.setState({course: course});
     }
 
     public render(): JSX.Element {
         return (
             <div>
                 <h1>Manage Course</h1>
-                <CourseForm course={this.state.course} errors={this.state.errors} allAuthors={this.props.authors} />
+                <CourseForm course={this.state.course} 
+                onChange={this.updateCourseState} 
+                errors={this.state.errors} 
+                allAuthors={this.props.authors} />
             </div>
         );
     }
