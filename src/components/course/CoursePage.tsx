@@ -15,7 +15,6 @@ export interface ICourseProps {
 }
 
 export interface ICourseState {
-    course: ICourse;
     navigate: boolean;
 }
 
@@ -23,25 +22,10 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
     constructor(props: ICourseProps) {
         super(props);
         this.state = {
-            course: {
-                id: "",
-                title: "",
-                watchHref: "",
-                authorId: "",
-                length: "",
-                category: ""
-            },
             navigate: false
         };
-
-        this.onTitleChange = this.onTitleChange.bind(this);
     }
 
-    public onTitleChange(ev: any): void {
-        const course: ICourse = this.state.course;
-        course.title = ev.target.value;
-        this.setState({course: course});
-    }
 
     public render(): JSX.Element {
         const courses: Array<ICourse> = this.props.courses;
