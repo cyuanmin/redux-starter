@@ -1,22 +1,54 @@
 
 import * as React from "react";
 import { ICourse } from "../../models/course";
+import { IAuthor } from "../../models/author";
+import TextInput from "../../common/TextInput";
+import SelectInput from "../../common/SelectInput";
 
 export interface ICourseFormProp {
     course: ICourse;
+    allAuthors?: Array<IAuthor>;
+    onSave?: () => any;
+    onChange?: () => any;
+    loading?: boolean;
+    errors?: any;
 }
-/*
-const CourseListRow: React.SFC<ICourseListRowProp> = (props: ICourseListRowProp): JSX.Element => {
-    const course: ICourse = props.course;
+
+const CourseForm: React.SFC<ICourseFormProp> = (props: ICourseFormProp): JSX.Element => {
     return (
-        <tr>
-            <td><a href={course.watchHref} target="_blank">Watch</a></td>
-            <td><Link to={'/course/' + props.course.id}>{course.title}</Link></td>
-            <td>{course.authorId}</td>
-            <td>{course.category}</td>
-            <td>{course.length}</td>
-        </tr>);
+        <form>
+            <TextInput name="title" 
+            label="Title"
+            value={props.course.title}
+            onChange={props.onChange}
+            error={props.errors.title}/>
+
+            <SelectInput name="authorId" 
+            label="Author"
+            value={props.course.authorId}
+            defaultOption="Select Author"
+            options={props.allAuthors}
+            onChange={props.onChange}
+            error={props.errors.authorId}/>
+
+            <TextInput name="category" 
+            label="Category"
+            value={props.course.category}
+            onChange={props.onChange}
+            error={props.errors.category}/>
+
+            <TextInput name="length" 
+            label="Length"
+            value={props.course.length}
+            onChange={props.onChange}
+            error={props.errors.length}/>
+
+            <input type="submit"
+            disabled={props.loading}
+            value={props.loading ? 'Saving...' : 'Save'}
+            className="btn btn-primary"
+            onClick={props.onSave}/>
+        </form>);
 };
 
-export default CourseListRow;
-*/
+export default CourseForm;
