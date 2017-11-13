@@ -58,8 +58,24 @@ export class ManagedCoursePage extends React.Component<IManagedCourseProps, IMan
         }
     }
 
+    public courseFormIsValid(): boolean {
+        let formIsValid: boolean = true;
+        const errors: ICourseError = {};
+        if (this.state.course.title.length < 5) {
+            errors.title = "Title must be at least 5 characters";
+            this.setState({errors: errors});
+            formIsValid = false;
+        }
+        return formIsValid;
+    }
+
     public async saveCourse(event: Event): Promise<void> {
         event.preventDefault();
+
+        if (!this.courseFormIsValid()) {
+            return;
+        }
+
         this.setState({saving: true});
         try{
             await this.props.actions.saveCourse(this.state.course);
