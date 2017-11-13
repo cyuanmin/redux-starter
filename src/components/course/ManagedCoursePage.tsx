@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ICourse } from "../../models/course";
-import { IAuthor, IAuthorFormatted} from "../../models/author";
+import { IAuthor, IAuthorFormatted } from "../../models/author";
 import { IDeleteCourseAction, CourseActionTypes, CourseTypeKeys } from "../../actions/courseTypes";
 import { connect } from "react-redux";
 import { ReducersMapObject, bindActionCreators } from "redux";
@@ -17,7 +17,6 @@ export interface ICourseError {
 }
 
 export interface IManagedCourseProps {
-    name: string;
     course: ICourse; // Redux properties. See mapStateToProps()
     authors: Array<IAuthorFormatted>; // Redux properties. See mapStateToProps()
     actions: typeof courseActions; // Redux actions. See mapStateToProps()
@@ -47,7 +46,7 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         const course: ICourse = this.state.course;
         const courseAny: any = course as any;
         courseAny[field] = event.target.value;
-        return this.setState({course: course});
+        return this.setState({ course: course });
     }
 
     public saveCourse(event: Event): any {
@@ -60,18 +59,27 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         return (
             <div>
                 <h1>Manage Course</h1>
-                <CourseForm course={this.state.course} 
-                onChange={this.updateCourseState} 
-                onSave={this.saveCourse}
-                errors={this.state.errors} 
-                allAuthors={this.props.authors} />
+                <CourseForm course={this.state.course}
+                    onChange={this.updateCourseState}
+                    onSave={this.saveCourse}
+                    errors={this.state.errors}
+                    allAuthors={this.props.authors} />
             </div>
         );
     }
 }
 
-function mapStateToProps(state: IAppState, ownProps: IManagedCourseProps): any {
-    const course: ICourse = {
+function getCourseById(courses: Array<ICourse>, id: string): ICourse {
+    const coursesFound: Array<ICourse> = courses.filter((course: ICourse) => course.id === id);
+    if (coursesFound) {
+        return coursesFound[0];
+    }
+
+    return null;
+}
+
+function mapStateToProps(state: IAppState, ownProps: any): any {
+    let course: ICourse = {
         id: "",
         watchHref: "",
         title: "",
@@ -79,6 +87,11 @@ function mapStateToProps(state: IAppState, ownProps: IManagedCourseProps): any {
         length: "",
         category: ""
     };
+
+    const courseId: string = ownProps.match.params.id;
+    if (courseId) {
+        course = getCourseById(state.courses, courseId);
+    }
 
     const authorsFormattedForDropdown: Array<IAuthorFormatted> = state.authors.map((author: IAuthor) => {
         return {
