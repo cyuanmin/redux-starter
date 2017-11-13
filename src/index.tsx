@@ -10,10 +10,14 @@ import {ICourse} from "./models/course";
 import {IAuthor} from "./models/author";
 import {loadCourse} from "./actions/courseActions";
 import {loadAuthors} from "./actions/authorActions";
+import {defaultCourses, 
+    defaultAuthors, 
+    defaultAjaxCalls} from "./stores/initialStates";
 
-const defaultCourses: Array<ICourse> = [];
-const defaultAuthors: Array<IAuthor> = [];
-const store: Store<IAppState> = configureStore({courses: defaultCourses, authors: defaultAuthors});
+const store: Store<IAppState> = configureStore({
+    courses: defaultCourses, 
+    authors: defaultAuthors, 
+    numAjaxCallsInProgress: defaultAjaxCalls});
 store.dispatch(loadCourse());
 store.dispatch(loadAuthors());
 

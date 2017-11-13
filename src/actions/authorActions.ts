@@ -1,6 +1,7 @@
 import {IAuthor} from "../models/author";
 import {AuthorTypeKeys, ILoadAuthorsSuccessAction} from "./authorTypes";
 import authorApi from "../api/mockAuthorApi";
+import {BeginAjaxCall} from "../actions/ajaxStatusActions";
 
 export function LoadAuthorSuccess(authors: Array<IAuthor>): ILoadAuthorsSuccessAction {
     return {
@@ -12,6 +13,7 @@ export function LoadAuthorSuccess(authors: Array<IAuthor>): ILoadAuthorsSuccessA
 export function loadAuthors(): (dispatch: any) => Promise<void>
 {
     return function(dispatch: any): Promise<void>{
+        dispatch(BeginAjaxCall());
         return authorApi.getAllAuthors().then((authors: Array<IAuthor>) => {
             dispatch(LoadAuthorSuccess(authors));
         });
