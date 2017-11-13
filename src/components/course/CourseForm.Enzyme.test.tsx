@@ -28,3 +28,14 @@ it('renders form and h1', () => {
     const wrapper = setup(false);
     expect(wrapper.find('form').length).toBe(1);
 })
+
+it('Save button is labeled "Save" when not saving', () => {
+    const wrapper = setup(false);
+    expect(wrapper.find('input').props().value).toBe("Save");
+})
+
+it('Save button is labeled "Saveing..." when not saving', () => {
+    const wrapper = setup(true);
+    expect(wrapper.find('input').props().value).toBe("Saving...");
+})
+
