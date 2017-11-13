@@ -14,6 +14,8 @@ import {defaultCourses,
     defaultAuthors, 
     defaultAjaxCalls} from "./stores/initialStates";
 
+import "../node_modules/toastr/build/toastr.min.css";   
+
 const store: Store<IAppState> = configureStore({
     courses: defaultCourses, 
     authors: defaultAuthors, 
