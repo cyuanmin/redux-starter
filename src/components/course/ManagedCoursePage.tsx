@@ -7,7 +7,7 @@ import { ReducersMapObject, bindActionCreators } from "redux";
 import * as courseActions from "../../actions/courseActions";
 import { IAppState } from "../../stores/configStore";
 import CourseList from "./CourseList";
-import CourseForm from "./CourseForm";
+import {CourseForm} from "./CourseForm";
 import * as toastr from "toastr";
 
 export interface ICourseError {

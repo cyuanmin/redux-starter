@@ -14,7 +14,7 @@ export interface ICourseFormProp {
     errors?: any;
 }
 
-const CourseForm: React.SFC<ICourseFormProp> = (props: ICourseFormProp): JSX.Element => {
+export const CourseForm: React.SFC<ICourseFormProp> = (props: ICourseFormProp): JSX.Element => {
     return (
         <form>
             <TextInput name="title" 
@@ -50,5 +50,3 @@ const CourseForm: React.SFC<ICourseFormProp> = (props: ICourseFormProp): JSX.Ele
             onClick={props.onSave}/>
         </form>);
 };
-
-export default CourseForm;
