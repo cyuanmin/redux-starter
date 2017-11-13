@@ -46,7 +46,7 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
     }
 }
 
-function mapStateToProps(state: IAppState, ownProps: ICourseProps): any{
+function mapStateToProps(state: IAppState, ownProps: any): any{
     return {
         courses: state.courses
     };

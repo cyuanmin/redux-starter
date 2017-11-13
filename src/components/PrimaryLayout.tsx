@@ -5,10 +5,16 @@ import AboutPage from "../components/about/AboutPage";
 import CoursePage from "../components/course/CoursePage";
 import ManagedCoursePage from "../components/course/ManagedCoursePage";
 import {Header} from "../components/header/Header";
+import {connect} from "react-redux";
+import {IAppState} from "../stores/configStore";
 
-export const PrimaryLayout: () => JSX.Element = (): JSX.Element => (
+export interface IPrimaryLayoutProps {
+    loading: boolean; // Redux property. See mapStateToProps()
+}
+
+const PrimaryLayout: (props: IPrimaryLayoutProps) => JSX.Element = (props: IPrimaryLayoutProps): JSX.Element => (
     <div className="container">
-        <Header/>
+        <Header loading={props.loading}/>
         <main>        
             <Route path="/" exact component={HomePage}/>
             <Route path="/about" component={AboutPage}/>
@@ -17,3 +23,11 @@ export const PrimaryLayout: () => JSX.Element = (): JSX.Element => (
         </main>
     </div>
 );
+
+function mapStateToProps(state: IAppState, ownProps: any): any{
+    return {
+        loading: state.ajaxCallsInProgress > 0
+    };
+}
+
+export default connect(mapStateToProps)(PrimaryLayout);

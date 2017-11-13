@@ -17,7 +17,7 @@ import {defaultCourses,
 const store: Store<IAppState> = configureStore({
     courses: defaultCourses, 
     authors: defaultAuthors, 
-    numAjaxCallsInProgress: defaultAjaxCalls});
+    ajaxCallsInProgress: defaultAjaxCalls});
 store.dispatch(loadCourse());
 store.dispatch(loadAuthors());
 

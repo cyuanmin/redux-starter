@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 export interface IAppState{
     courses: Array<ICourse>;
     authors: Array<IAuthor>;
-    numAjaxCallsInProgress: number;
+    ajaxCallsInProgress: number;
 }
 
 export function configureStore(initalState: IAppState): Store<IAppState>{

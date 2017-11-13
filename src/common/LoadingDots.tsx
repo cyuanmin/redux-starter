@@ -10,14 +10,13 @@ export interface ILoadingDotsState{
 }
 
 class LoadingDots extends React.Component<ILoadingDotsProps, ILoadingDotsState> {
-    private interval: any;
     constructor(props: ILoadingDotsProps){
         super(props);
         this.state = {frame: 1};
     }
 
     public componentDidMount(): void {
-        this.interval = setInterval((): void => {
+        const timerInterval: any = setInterval((): void => {
             this.setState({
                 frame: this.state.frame + 1
             });
