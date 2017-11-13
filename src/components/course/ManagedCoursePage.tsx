@@ -26,6 +26,7 @@ export interface IManagedCourseProps {
 export interface IManagedCourseState {
     course: ICourse;
     errors: ICourseError;
+    saving: boolean;
 }
 
 
@@ -34,7 +35,8 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         super(props);
         this.state = {
             course: Object.assign({}, this.props.course),
-            errors: {}
+            errors: {},
+            saving: false
         };
 
         this.updateCourseState = this.updateCourseState.bind(this);
@@ -57,7 +59,9 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
 
     public async saveCourse(event: Event): Promise<void> {
         event.preventDefault();
+        this.setState({saving: true});
         await this.props.actions.saveCourse(this.state.course);
+        this.setState({saving: false});
         this.props.history.push("/courses");
     }
 
@@ -69,7 +73,8 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
                     onChange={this.updateCourseState}
                     onSave={this.saveCourse}
                     errors={this.state.errors}
-                    allAuthors={this.props.authors} />
+                    allAuthors={this.props.authors} 
+                    saving={this.state.saving} />
             </div>
         );
     }
