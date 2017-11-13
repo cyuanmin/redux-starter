@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter} from 'react-router-dom';
 import * as React from "react";
 import HomePage from "../components/home/HomePage";
 import AboutPage from "../components/about/AboutPage";
@@ -30,4 +30,7 @@ function mapStateToProps(state: IAppState, ownProps: any): any{
     };
 }
 
-export default connect(mapStateToProps)(PrimaryLayout);
+// https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
+// We must use withRouter so that location is injected as a property to the PrimaryLayout object, allowing it to 
+// detect changes in location and re-render the child view
+export default withRouter(connect(mapStateToProps, null, null)(PrimaryLayout));
