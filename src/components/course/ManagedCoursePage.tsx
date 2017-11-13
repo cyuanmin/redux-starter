@@ -49,6 +49,12 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         return this.setState({ course: course });
     }
 
+    public componentWillReceiveProps(nextProps: IManagedCourseProps): void {
+        if (this.props.course.id !== nextProps.course.id) {
+            this.setState({course: Object.assign({}, nextProps.course)});
+        }
+    }
+
     public saveCourse(event: Event): any {
         event.preventDefault();
         this.props.actions.saveCourse(this.state.course);
