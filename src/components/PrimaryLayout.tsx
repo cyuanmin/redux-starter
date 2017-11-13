@@ -12,8 +12,8 @@ export const PrimaryLayout: () => JSX.Element = (): JSX.Element => (
         <main>        
             <Route path="/" exact component={HomePage}/>
             <Route path="/about" component={AboutPage}/>
-            <Route path="/course" exact component={CoursePage}/>
-            <Route path="/course/:id" exact component={ManagedCoursePage}/>
+            <Route path="/courses" exact component={CoursePage}/>
+            <Route path="/course/:id?" component={ManagedCoursePage}/>
         </main>
     </div>
 );

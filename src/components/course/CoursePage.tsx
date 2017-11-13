@@ -31,7 +31,7 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
         const navigate: boolean = this.state.navigate;
 
         if (navigate) {
-            return <Redirect to="/course/test" push={true}/>;
+            return <Redirect to="/course" push={true}/>;
         }
         return (
             <div>

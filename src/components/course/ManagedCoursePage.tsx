@@ -21,6 +21,7 @@ export interface IManagedCourseProps {
     course: ICourse; // Redux properties. See mapStateToProps()
     authors: Array<IAuthorFormatted>; // Redux properties. See mapStateToProps()
     actions: typeof courseActions; // Redux actions. See mapStateToProps()
+    history: Array<string>; // From router injection. Magic :-(
 }
 
 export interface IManagedCourseState {
@@ -52,6 +53,7 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
     public saveCourse(event: Event): any {
         event.preventDefault();
         this.props.actions.saveCourse(this.state.course);
+        this.props.history.push("/courses");
     }
 
     public render(): JSX.Element {
