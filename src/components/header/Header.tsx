@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import * as React from "react";
+import LoadingDots from "../../common/LoadingDots";
 
 export const Header: () => JSX.Element = (): JSX.Element =>
     (
@@ -10,6 +11,7 @@ export const Header: () => JSX.Element = (): JSX.Element =>
                 <NavLink to='/about' activeClassName="active">About</NavLink>
                 {" | "}
                 <NavLink to='/courses' activeClassName="active">Courses</NavLink>
+                <LoadingDots interval={100} dots={20}/>
             </nav>
         </header>
     );
