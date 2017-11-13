@@ -61,10 +61,16 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
     public async saveCourse(event: Event): Promise<void> {
         event.preventDefault();
         this.setState({saving: true});
-        await this.props.actions.saveCourse(this.state.course);
-        this.setState({saving: false});
-        toastr.success("Course saved!");
-        this.props.history.push("/courses");
+        try{
+            await this.props.actions.saveCourse(this.state.course);
+            this.setState({saving: false});
+            toastr.success("Course saved!");
+            this.props.history.push("/courses");
+        }
+        catch (e) {
+            toastr.error(e);      
+            this.setState({saving: false});
+        }
     }
 
     public render(): JSX.Element {

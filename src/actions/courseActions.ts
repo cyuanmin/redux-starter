@@ -4,7 +4,7 @@ import {CourseTypeKeys,
     ICreateCourseSuccessAction, 
     IUpdateCourseSuccessAction} from "./courseTypes";
 import courseApi from "../api/mockCourseApi";
-import {BeginAjaxCall} from "../actions/ajaxStatusActions";
+import {BeginAjaxCall, AjaxCallFailed} from "../actions/ajaxStatusActions";
 
 export function CreateCourseSuccess(course: ICourse): ICreateCourseSuccessAction {
     return {
@@ -33,6 +33,7 @@ export function saveCourse(course: ICourse): (dispatch: any) => Promise<void>{
             course.id  ? dispatch(UpdateCourseSuccess(savedCourse)) : 
             dispatch(CreateCourseSuccess(savedCourse));
         }).catch((error: any) => {
+            dispatch(AjaxCallFailed());
             throw(error);
         });
     };
