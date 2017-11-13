@@ -6,7 +6,7 @@
     "start": "npm-run-all --parallel dev test",
     "dev": "./node_modules/.bin/webpack-dev-server",
     "build": "webpack",
-    "test": "mocha --watch --reporter spec --compilers ts:ts-node/register ./src/**/*.test.ts*"
+    "test": "mocha --watch --reporter spec --compilers ts:ts-node/register -r jsdom-global/register ./src/**/*.test.ts*"
   },
   "author": "Yuanming Chen",
   "license": "MIT",
@@ -31,6 +31,8 @@
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "file-loader": "^1.1.5",
+    "jsdom": "^11.3.0",
+    "jsdom-global": "^3.0.2",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.2",
     "react-addons-test-utils": "^15.6.2",

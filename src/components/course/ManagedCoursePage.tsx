@@ -20,7 +20,7 @@ export interface ICourseError {
 export interface IManagedCourseProps {
     course: ICourse; // Redux properties. See mapStateToProps()
     authors: Array<IAuthorFormatted>; // Redux properties. See mapStateToProps()
-    actions: typeof courseActions; // Redux actions. See mapStateToProps()
+    actions?: typeof courseActions; // Redux actions. See mapStateToProps()
     history: Array<string>; // From router injection. Magic :-(
 }
 
@@ -31,7 +31,7 @@ export interface IManagedCourseState {
 }
 
 
-class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCourseState> {
+export class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCourseState> {
     constructor(props: IManagedCourseProps) {
         super(props);
         this.state = {
