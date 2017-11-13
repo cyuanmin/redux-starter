@@ -55,9 +55,9 @@ class ManagedCoursePage extends React.Component<IManagedCourseProps, IManagedCou
         }
     }
 
-    public saveCourse(event: Event): any {
+    public async saveCourse(event: Event): Promise<void> {
         event.preventDefault();
-        this.props.actions.saveCourse(this.state.course);
+        await this.props.actions.saveCourse(this.state.course);
         this.props.history.push("/courses");
     }
 
