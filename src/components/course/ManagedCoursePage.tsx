@@ -89,7 +89,7 @@ function mapStateToProps(state: IAppState, ownProps: any): any {
     };
 
     const courseId: string = ownProps.match.params.id;
-    if (courseId) {
+    if (courseId && state.courses.length > 0) {
         course = getCourseById(state.courses, courseId);
     }
 
