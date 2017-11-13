@@ -20,7 +20,7 @@ export interface ICourseError {
 export interface IManagedCourseProps {
     course: ICourse; // Redux properties. See mapStateToProps()
     authors: Array<IAuthorFormatted>; // Redux properties. See mapStateToProps()
-    actions?: typeof courseActions; // Redux actions. See mapStateToProps()
+    actions: typeof courseActions; // Redux actions. See mapStateToProps()
     history: Array<string>; // From router injection. Magic :-(
 }
 
