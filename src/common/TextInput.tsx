@@ -9,6 +9,7 @@ export interface ITextInputProp {
     error: string;
 }
 
+// A generic TextInput component for entering texts. It uses function-style component helper (React.SFC).
 const TextInput: React.SFC<ITextInputProp> = (props: ITextInputProp): JSX.Element => {
     let wrapperClass: string = "form-group";
     if (props.error && props.error.length > 0) {

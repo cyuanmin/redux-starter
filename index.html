@@ -5,13 +5,14 @@
         <title>Hello React!</title>
     </head>
     <body>
-        <div id="example"></div>
+        <div id="example"></div><!--This is where React component (i.e. App) will be injected
 
-        <!-- Dependencies -->
+        <!-- We don't want to bundle all JS into a single file as it would add the recompile time
+        for live reload scenarios. We will make sure that react itself is not in our bundle -->
         <script src="../node_modules/react/umd/react.development.js"></script>
         <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
 
-        <!-- Main -->
+        <!-- Our own React code -->
         <script src="../dist/qtclient.bundle.js"></script>
     </body>
 </html>

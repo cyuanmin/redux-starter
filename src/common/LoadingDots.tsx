@@ -9,6 +9,8 @@ export interface ILoadingDotsState{
     frame: number;
 }
 
+// Showing progress. The implementation uses a timer to draw dots. The number of
+// dots is determined by inputs like interval and dots. 
 class LoadingDots extends React.Component<ILoadingDotsProps, ILoadingDotsState> {
     private timerInterval: any;
     constructor(props: ILoadingDotsProps){

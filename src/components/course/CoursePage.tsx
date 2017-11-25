@@ -15,14 +15,17 @@ export interface ICourseProps {
 }
 
 export interface ICourseState {
-    navigate: boolean;
+    navigate: boolean; // In react, we use state property to decide whether to redirect or not.
+    // After clicking the "Add course" button, we will navigate to /course page for editing 
+    // a brand-new course
 }
 
+// The course page allows users to add a course and to review summaries of all exising courses
 class CoursePage extends React.Component<ICourseProps, ICourseState> {
     constructor(props: ICourseProps) {
         super(props);
         this.state = {
-            navigate: false
+            navigate: false // By default, no need to navigate
         };
     }
 
@@ -31,9 +34,10 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
         const navigate: boolean = this.state.navigate;
 
         if (navigate) {
-            return <Redirect to="/course" push={true}/>;
+            return <Redirect to="/course" push={true}/>; // redirecting to course page for editing brand-new course
         }
         return (
+            // Display "Add Course" button as well as showing all courses
             <div>
                 <h1>Courses</h1>
                 <input type="submit"
@@ -46,12 +50,16 @@ class CoursePage extends React.Component<ICourseProps, ICourseState> {
     }
 }
 
+// Convert redux state (i.e. IAppState) to Compnent properties (i.e. courses). It should be noted that
+// the properties exposed (i.e. courses) must be consistent with ICourseProps's properties (i.e. courses) 
 function mapStateToProps(state: IAppState, ownProps: any): any{
     return {
         courses: state.courses
     };
 }
 
+// Return redux actions so that the UI can later trigger those actions. Make sure that the returned actions are
+// matching the properties for the component (i.e. actions)
 function mapDispatchToProps(dispatch: any): any{
     return {
         // https://stackoverflow.com/questions/42888184/how-to-resolve-typescript-redux-connect-error-actioncreatorsmapobject
@@ -59,4 +67,5 @@ function mapDispatchToProps(dispatch: any): any{
     };
 }
 
+// Wire redux via connect() so that CoursePage can treat redux states as regular React properties
 export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);

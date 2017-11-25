@@ -7,6 +7,7 @@ import { ManagedCoursePage, IManagedCourseProps } from "./ManagedCoursePage";
 import { ICourse } from "../../models/course";
 import {ICreateCourseSuccessAction, IUpdateCourseSuccessAction, ILoadCoursesSuccessAction} from '../../actions/courseTypes';
 
+// UI test using Enzyme library
 describe("Manage Course Page", () => {
     it("Set error message when trying to save empty title", () => {
         const course: ICourse = {

@@ -7,6 +7,7 @@ export enum CourseTypeKeys{
     UPDATE_COURSE_SUCCESS = "UPDATE_COURSE_SUCCESS"
 }
 
+// Type definitions for courses
 export interface IDeleteCourseAction {
     type: CourseTypeKeys.DELETE_COURSE;
     id: number;

@@ -6,6 +6,8 @@ export interface ICourseListProp {
     courses: Array<ICourse>;
 }
 
+// Show the summary of a list of courses using function-style component helper (React.SFC).
+// A course list is composed of a list of CourseListRow
 const CourseList: React.SFC<ICourseListProp> = (props: ICourseListProp): JSX.Element => {
     return (
         <table className="table">

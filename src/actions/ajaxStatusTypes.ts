@@ -1,3 +1,4 @@
+// Type definition for Ajax calls
 export enum AjaxTypeKeys{
     BEGIN_AJAX_CALL = "BEGIN_AJAX_CALL",
     AJAX_CALL_FAILED = "AJAX_CALL_FAILED"

@@ -8,10 +8,12 @@ import {Header} from "../components/header/Header";
 import {connect} from "react-redux";
 import {IAppState} from "../stores/configStore";
 
+// Definition of props for PrimaryLayout component
 export interface IPrimaryLayoutProps {
     loading: boolean; // Redux property. See mapStateToProps()
 }
 
+// PrimaryLayout defines the website's overall layout (e.g. header, body, route, etc)
 const PrimaryLayout: (props: IPrimaryLayoutProps) => JSX.Element = (props: IPrimaryLayoutProps): JSX.Element => (
     <div className="container">
         <Header loading={props.loading}/>
@@ -24,6 +26,7 @@ const PrimaryLayout: (props: IPrimaryLayoutProps) => JSX.Element = (props: IPrim
     </div>
 );
 
+// Expose "loading" property to the component.
 function mapStateToProps(state: IAppState, ownProps: any): any{
     return {
         loading: state.ajaxCallsInProgress > 0
@@ -33,4 +36,5 @@ function mapStateToProps(state: IAppState, ownProps: any): any{
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 // We must use withRouter so that location is injected as a property to the PrimaryLayout object, allowing it to 
 // detect changes in location and re-render the child view
+// connect() allows us to expose redux properties to React component
 export default withRouter(connect(mapStateToProps, null, null)(PrimaryLayout));

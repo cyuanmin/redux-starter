@@ -1,6 +1,7 @@
 import * as Chai from 'chai';
 const expect = Chai.expect;
 
+// A unit test using Chai framework.
 describe("Test Header", function () {
     it("Check Header", function () {
         const a: number = 3;

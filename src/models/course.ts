@@ -1,3 +1,4 @@
+// The definition of a course
 export interface ICourse {
     id: string;
     title: string;

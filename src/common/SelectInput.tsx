@@ -10,6 +10,7 @@ export interface ISelectInputProp {
     options: Array<any>;
 }
 
+// A generic SelectInput component for picking selections from a list. It uses function-style component helper (React.SFC).
 const SelectInput: React.SFC<ISelectInputProp> = (props: ISelectInputProp): JSX.Element => {
     return (
         <div className="form-group">

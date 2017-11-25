@@ -14,6 +14,9 @@ export interface ICourseFormProp {
     errors?: any;
 }
 
+// The UI of a course. It has several text inputs and select inputs. When user enters text or
+// make selection choices, callbacks will be triggered as a result. The implementation of those
+// callbacks (e.g. on Change) will reside in parent components
 export const CourseForm: React.SFC<ICourseFormProp> = (props: ICourseFormProp): JSX.Element => {
     return (
         <form>
