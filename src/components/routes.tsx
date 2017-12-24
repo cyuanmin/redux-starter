@@ -25,7 +25,7 @@ export interface IRoutesStates {
 
 // PrimaryLayout defines the website's overall layout (e.g. header, body, route, etc)
 //const Routes: (props: IPrimaryLayoutProps) => JSX.Element = (props: IPrimaryLayoutProps): JSX.Element => (
-class Routes extends React.Component<IRoutesStates, IRoutesStates> {
+class Routes extends React.Component<{}, IRoutesStates> {
     constructor(props: any) {
         super(props);
         this.state = {
