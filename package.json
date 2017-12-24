@@ -4,7 +4,7 @@
   "description": "Starter kit for React and Redux by Yuanming Chen",
   "scripts": {
     "start": "npm-run-all --parallel dev test",
-    "dev": "./node_modules/.bin/webpack-dev-server",
+    "dev": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0",
     "build": "webpack",
     "test": "mocha --watch --reporter spec --compilers ts:ts-node/register -r jsdom-global/register ./src/**/*.test.ts*"
   },
@@ -48,7 +48,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "antd": "^3.0.3",
     "expect": "^21.2.1",
     "jquery": "^3.2.1",
     "react": "^16.1.0",
